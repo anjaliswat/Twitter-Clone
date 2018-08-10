@@ -21,7 +21,7 @@ const client = new Twitter({
   access_token_secret: access_token_secret
 });
 
-let params = {screen_name: 'aerohitk', tweet_mode:'extended'}
+let params = {screen_name: 'aerohitk', tweet_mode:'extended', count: 7}
 app.get('/tweets', (req,res) => {
   client.get('https://api.twitter.com/1.1/statuses/user_timeline.json', params, function(error, tweets, response) {
     if(error) throw error;

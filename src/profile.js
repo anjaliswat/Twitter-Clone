@@ -17,20 +17,36 @@ class Profile extends React.Component {
       });
   }
 
-  urlify(text) {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const urlPresent = urlRegex.test(text);
-    if (urlPresent == true) {
-      return text.match(urlRegex);
+  getMedia(tweet) {
+    if (tweet.retweeted_status) {
+      const { media } = tweet.retweeted_status.entities;
+      if (Array.isArray(media) || media !== undefined) {
+        return tweet.retweeted_status.entities.media[0].media_url_https;
+      }
     }
-    return text;
+    return false;
+  }
+
+  urlify(tweet, remove) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const urlPresent = urlRegex.test(tweet);
+    if (urlPresent == true) {
+      if(remove == false) {
+        return tweet.match(urlRegex);
+      }
+      if(remove == true) {
+        return tweet.replace(tweet.match(urlRegex), "")
+      }
+    }
+    return tweet;
   }
 
   render() {
     const { tweets } = this.state;
     let user = '';
+
     tweets.map(tweet => (
-      user = tweet.user
+      { user } = tweet
     ));
 
     return (
@@ -86,6 +102,7 @@ class Profile extends React.Component {
               {user.name}
             </p>
             <p className="username">
+              @
               {user.screen_name}
             </p>
           </div>
@@ -100,12 +117,18 @@ class Profile extends React.Component {
                   {tweet.user.name}
                 </p>
                 <p>
+                  @
                   {tweet.user.screen_name}
                 </p>
               </div>
               <p className="content">
-                {tweet.full_text}
+                {this.urlify(tweet.full_text, true)}
               </p>
+              <div className="attachments">
+                <a href={this.urlify(tweet.full_text, false)}>
+                  <img alt="" src={this.getMedia(tweet)} className="media"/>
+                </a>
+              </div>
             </div>
           ))
         }
