@@ -11,6 +11,8 @@ let access_token_secret = auth.accessTokenSecret;
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
