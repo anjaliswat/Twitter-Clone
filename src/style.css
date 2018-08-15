@@ -90,6 +90,19 @@ body {
   margin-top: 2em;
 }
 
+.textbox {
+  height: 5em;
+  width: 20em;
+  margin-left: 40%;
+  margin-top: 10%;
+  margin-right: 2em;
+}
+
+.button {
+  height: 3em;
+  width: 5em;
+}
+
 .username {
   padding: 0.5em;
   width: 7em;
@@ -116,7 +129,7 @@ body {
   height: auto;
   width: auto;
   max-width: 87%;
-  max-height: 50%;
+  max-height: 30%;
   padding: 0.3em;
 }
 
