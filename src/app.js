@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SongsPage from './SongsPage';
+import Profile from './profile';
 
 ReactDOM.render(
   <Profile />,
