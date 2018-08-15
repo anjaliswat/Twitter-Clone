@@ -34,13 +34,6 @@ app.get('/profile', (req,res) => {
   })
 })
 
-app.get('/home', (req,res) => {
-  client.get('https://api.twitter.com/1.1/statuses/home_timeline.json', function(error, tweets, response) {
-    if(error) throw error;
-    res.send(tweets);
-  })
-})
-
 app.listen(PORT, () => {
   console.log('Listening on port 3000');
 });
