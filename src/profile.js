@@ -17,7 +17,15 @@ class Profile extends React.Component {
   }
 
   setData(username) {
-    fetch(`PORT/profile?screen_name=${username}`)
+    let path;
+
+    if (process.env.NODE_ENV === 'development') {
+      path = 'http://localhost:3000/profile';
+    } else {
+      path = '/profile';
+    }
+
+    fetch(`${path}?screen_name=${username}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({ tweets: data });
