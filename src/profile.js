@@ -1,4 +1,5 @@
 import React from 'react';
+import Media from './media';
 import './style.css';
 
 class Profile extends React.Component {
@@ -6,55 +7,59 @@ class Profile extends React.Component {
     super();
     this.state = {
       tweets: [],
+      clicked: false,
+      username: '',
     };
+
+    this.handleInput = this.handleInput.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    fetch('http://localhost:3000/tweets')
+  setData(username) {
+    fetch(`http://localhost:3000/profile?screen_name=${username}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({ tweets: data });
+        console.log(data);
       });
   }
 
-  getMedia(tweet) {
-    if (tweet.retweeted_status) {
-      const { media } = tweet.retweeted_status.entities;
-      if (Array.isArray(media) || media !== undefined) {
-        return tweet.retweeted_status.entities.media[0].media_url_https;
-      }
-    }
-    return false;
+  handleClick() {
+    this.setState({ clicked: true });
+    const { username } = this.state;
+    this.setData(username);
   }
 
-  urlify(tweet, remove) {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const urlPresent = urlRegex.test(tweet);
-    if (urlPresent == true) {
-      if(remove == false) {
-        return tweet.match(urlRegex);
-      }
-      if(remove == true) {
-        return tweet.replace(tweet.match(urlRegex), "")
-      }
-    }
-    return tweet;
+  handleInput(e) {
+    this.setState({ username: e.target.value });
   }
 
   render() {
-    const { tweets } = this.state;
+    const { tweets, clicked, username } = this.state;
     let user = '';
 
     tweets.map(tweet => (
       { user } = tweet
     ));
 
+    if (!clicked) {
+      return (
+        <div>
+          <input type="text" value={username} onChange={this.handleInput} />
+          <button type="button" onClick={this.handleClick}>
+            Enter
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div className="user_profile">
         <div className="user_data">
           <div className="images">
+            <img alt="icon" src="http://mediad.publicbroadcasting.net/p/wjct/files/styles/medium/public/201407/v65oai7fxn47qv9nectx.png" className="twitter_icon" />
             <img alt="header" src={user.profile_banner_url} className="header" />
-            <img alt="profile" src={user.profile_image_url} className="profile-pic" />
+            <img alt="profile" src={user.profile_image_url} className="profile_pic" />
           </div>
           <table className="stats">
             <thead>
@@ -84,11 +89,11 @@ class Profile extends React.Component {
                 </td>
 
                 <td>
-                  {user.followers_count}
+                  {user.friends_count}
                 </td>
 
                 <td>
-                  {user.friends_count}
+                  {user.followers_count}
                 </td>
 
                 <td>
@@ -121,14 +126,7 @@ class Profile extends React.Component {
                   {tweet.user.screen_name}
                 </p>
               </div>
-              <p className="content">
-                {this.urlify(tweet.full_text, true)}
-              </p>
-              <div className="attachments">
-                <a href={this.urlify(tweet.full_text, false)}>
-                  <img alt="" src={this.getMedia(tweet)} className="media"/>
-                </a>
-              </div>
+              <Media tweet={tweet} />
             </div>
           ))
         }

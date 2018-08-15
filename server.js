@@ -21,9 +21,17 @@ const client = new Twitter({
   access_token_secret: access_token_secret
 });
 
-let params = {screen_name: 'aerohitk', tweet_mode:'extended', count: 7}
-app.get('/tweets', (req,res) => {
+app.get('/profile', (req,res) => {
+  screen_name = req.query.screen_name;
+  params = {screen_name: screen_name, tweet_mode:'extended'};
   client.get('https://api.twitter.com/1.1/statuses/user_timeline.json', params, function(error, tweets, response) {
+    if(error) throw error;
+    res.send(tweets);
+  })
+})
+
+app.get('/home', (req,res) => {
+  client.get('https://api.twitter.com/1.1/statuses/home_timeline.json', function(error, tweets, response) {
     if(error) throw error;
     res.send(tweets);
   })
