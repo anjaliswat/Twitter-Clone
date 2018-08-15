@@ -17,7 +17,7 @@ class Profile extends React.Component {
   }
 
   setData(username) {
-    fetch(`http://localhost:3000/profile?screen_name=${username}`)
+    fetch(`PORT/profile?screen_name=${username}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({ tweets: data });
