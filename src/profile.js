@@ -26,9 +26,8 @@ class Profile extends React.Component {
 
   handleClick() {
     const { username } = this.state;
-    if(username) {
+    if (username) {
       this.setState({ clicked: true });
-      const { username } = this.state;
       this.setData(username);
     }
   }
