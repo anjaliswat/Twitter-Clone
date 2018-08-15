@@ -2,6 +2,7 @@ let Twitter = require('twitter');
 const express = require('express');
 const request = require('request');
 const auth = require('./config.json');
+const path = require('path')
 
 let consumer_key = auth.apiKey;
 let consumer_secret = auth.apiSecret;
