@@ -70,15 +70,6 @@ class Profile extends React.Component {
           tweets.map(tweet => (
             <div key={tweet.id_str} className="tweet">
               <img alt="profile" src={user.profile_image_url} className="user_icon" />
-              <div className="tweet_user_credentials">
-                <p>
-                  {tweet.user.name}
-                </p>
-                <p>
-                  @
-                  {tweet.user.screen_name}
-                </p>
-              </div>
               <Media tweet={tweet} />
             </div>
           ))
