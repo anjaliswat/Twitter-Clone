@@ -9,66 +9,39 @@ class Media extends React.Component {
     const { retweeted_status } = tweet;
     const retweetedBy = 'Retweeted By ';
     if (retweeted_status) {
-      const { urls } = retweeted_status.entities;
-      if (urls[0]) {
-        return (
-          <div className="retweet">
-            <div>
-              <p>
-                {retweetedBy}
-                {tweet.user.name}
-                @
-                {tweet.user.screen_name}
-              </p>
-            </div>
-            <div className="retweet_user_credentials">
-              <p>
-                {tweet.entities.user_mentions[0].name}
-              </p>
-              <p>
-                @
-                {tweet.entities.user_mentions[0].screen_name}
-              </p>
-            </div>
-            <div className="retweet_content">
-              {retweeted_status.full_text}
-              <div className="media">
-                <div className="attachments">
-                  <a href={urls[0].url}>
-                    <img alt="" src={urls[0].display_url} className="media" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      }
-      if (!urls) {
-        return (
-          <div className="retweet">
-            <p className="retweetedBy">
+      return (
+        <div className="retweet">
+          <div>
+            <p>
               {retweetedBy}
               {tweet.user.name}
               @
               {tweet.user.screen_name}
             </p>
-
-            <div className="retweet_user_credentials">
-              <p>
-                {tweet.entities.user_mentions[0].name}
-              </p>
-              <p>
-                @
-                {tweet.entities.user_mentions[0].screen_name}
-              </p>
-            </div>
-            <div className="retweet_content">
-              {retweeted_status.full_text}
+          </div>
+          <div className="retweet_user_credentials">
+            <p>
+              {tweet.entities.user_mentions[0].name}
+            </p>
+            <p>
+              @
+              {tweet.entities.user_mentions[0].screen_name}
+            </p>
+          </div>
+          <div className="retweet_content">
+            {retweeted_status.full_text}
+            <div className="media">
+              <div className="attachments">
+                <a href={urls[0].url}>
+                  <img alt="" src={urls[0].display_url} className="media" />
+                </a>
+              </div>
             </div>
           </div>
-        );
-      }
+        </div>
+      );
     }
+
     if (media) {
       return (
         <div>
