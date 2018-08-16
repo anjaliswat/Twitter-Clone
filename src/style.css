@@ -110,6 +110,10 @@ a {
   margin-right: 2em;
 }
 
+.icons i{
+  padding-top: 1em;
+}
+
 .button {
   height: 3em;
   width: 5em;
@@ -126,7 +130,7 @@ a {
   border-radius: 50%;
   height: 3em;
   width: 3em;
-  margin-bottom: 5em;
+  margin-bottom: 6em;
   margin-right: 1em;
 }
 
@@ -143,19 +147,24 @@ a {
   width: auto;
   max-width: 87%;
   max-height: 30%;
-  padding: 0.3em;
+  padding: 1em;
 }
 
 .content {
   padding: 0.5em;
 }
 
-.fas fa-retweet {
-  font-size: 20em;
+.fa-retweet {
+  padding-right: 0.4em;
+}
+
+.fa-heart {
+  padding-left: 2em;
+  padding-right: 0.4em;
 }
 
 .retweet_content {
-  margin-left: 4em;
+  margin-left: 3em;
   padding: 0.5em;
   height: 40%;
   width: 90%;
@@ -163,4 +172,8 @@ a {
   border-width: thin;
   border-color: rgb(231, 236, 240);
   border-radius: 2em;
+}
+
+.icons_media {
+  margin-left: 4.4em;
 }

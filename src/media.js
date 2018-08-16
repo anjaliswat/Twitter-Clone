@@ -37,6 +37,12 @@ class Media extends React.Component {
           <div className="retweet_content">
             {retweeted_status.full_text}
           </div>
+          <div className="icons">
+            <i className="fas fa-retweet" />
+            {tweet.retweet_count}
+            <i className="far fa-heart" />
+            {tweet.favorite_count}
+          </div>
         </div>
       );
     }
@@ -70,6 +76,12 @@ class Media extends React.Component {
               </a>
             </div>
           </div>
+          <div className="icons_media">
+            <i className="fas fa-retweet" />
+            {tweet.retweet_count}
+            <i className="far fa-heart" />
+            {tweet.favorite_count}
+          </div>
         </div>
       );
     }
@@ -90,6 +102,12 @@ class Media extends React.Component {
         </div>
         <div className="content">
           {tweet.full_text}
+        </div>
+        <div className="icons">
+          <i className="fas fa-retweet" />
+          {tweet.retweet_count}
+          <i className="far fa-heart" />
+          {tweet.favorite_count}
         </div>
       </div>
     );
