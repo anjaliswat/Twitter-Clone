@@ -8,24 +8,30 @@ class Media extends React.Component {
     const { media } = tweet.entities;
     const { retweeted_status } = tweet;
     const retweetedBy = 'Retweeted By ';
+    console.log(tweet);
     if (retweeted_status) {
+      const { name } = tweet.entities.user_mentions[0];
+      const { screen_name } = tweet.entities.user_mentions[0];
       return (
         <div className="retweet">
           <div>
             <p>
               {retweetedBy}
-              {tweet.user.name}
               @
               {tweet.user.screen_name}
             </p>
           </div>
           <div className="retweet_user_credentials">
             <p>
-              {tweet.entities.user_mentions[0].name}
+              <a href={`https://twitter.com/${screen_name}`}>
+                {name}
+              </a>
             </p>
             <p>
-              @
-              {tweet.entities.user_mentions[0].screen_name}
+              <a href={`https://twitter.com/${screen_name}`}>
+                @
+                {screen_name}
+              </a>
             </p>
           </div>
           <div className="retweet_content">
@@ -35,16 +41,23 @@ class Media extends React.Component {
       );
     }
 
+    const { name } = tweet.user;
+    const { screen_name } = tweet.user;
+
     if (media) {
       return (
         <div>
           <div className="tweet_user_credentials">
             <p>
-              {tweet.user.name}
+              <a href={`https://twitter.com/${screen_name}`}>
+                {name}
+              </a>
             </p>
             <p>
-              @
-              {tweet.user.screen_name}
+              <a href={`https://twitter.com/${screen_name}`}>
+                @
+                {screen_name}
+              </a>
             </p>
           </div>
           <div className="media">
@@ -64,11 +77,15 @@ class Media extends React.Component {
       <div>
         <div className="tweet_user_credentials">
           <p>
-            {tweet.user.name}
+            <a href={`https://twitter.com/${screen_name}`}>
+              {name}
+            </a>
           </p>
           <p>
-            @
-            {tweet.user.screen_name}
+            <a href={`https://twitter.com/${screen_name}`}>
+              @
+              {screen_name}
+            </a>
           </p>
         </div>
         <div className="content">
