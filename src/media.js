@@ -30,13 +30,6 @@ class Media extends React.Component {
           </div>
           <div className="retweet_content">
             {retweeted_status.full_text}
-            <div className="media">
-              <div className="attachments">
-                <a href={urls[0].url}>
-                  <img alt="" src={urls[0].display_url} className="media" />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       );
