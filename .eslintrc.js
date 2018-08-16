@@ -9,7 +9,8 @@ module.exports = {
       'no-return-assign':'off',
       'camelcase': 'off',
       'react/prefer-stateless-function': 'off',
-      'no-plusplus': 'off'
+      'no-plusplus': 'off',
+      'no-named-as-default-member': 'off',
     }
 };
 ;

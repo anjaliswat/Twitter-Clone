@@ -17,7 +17,7 @@ body {
   border-radius: 3em;
   background-color: rgba(255,255,255,0.5);
   margin: auto;
-  width: 45%;
+  width: 50%;
   margin-top: 2.5em;
   padding: 1em;
 }
@@ -110,10 +110,11 @@ body {
 }
 
 .user_icon {
+  float: left;
   border-radius: 50%;
   height: 3em;
   width: 3em;
-  float: left;
+  margin-bottom: 5em;
   margin-right: 1em;
 }
 
