@@ -7,7 +7,7 @@ class Media extends React.Component {
     const { tweet } = this.props;
     const { media } = tweet.entities;
     const { retweeted_status } = tweet;
-    const retweetedBy = 'Retweeted By '
+    const retweetedBy = 'Retweeted By ';
     if (retweeted_status) {
       const { urls } = retweeted_status.entities;
       if (urls[0]) {
@@ -47,10 +47,10 @@ class Media extends React.Component {
         return (
           <div className="retweet">
             <p className="retweetedBy">
-            {retweetedBy}
-            {tweet.user.name}
-            @
-            {tweet.user.screen_name}
+              {retweetedBy}
+              {tweet.user.name}
+              @
+              {tweet.user.screen_name}
             </p>
 
             <div className="retweet_user_credentials">
