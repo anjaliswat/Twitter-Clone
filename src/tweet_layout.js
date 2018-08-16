@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Utilities from './utilities';
 
-class Media extends React.Component {
+class Tweet extends React.Component {
   render() {
     const { tweet } = this.props;
     const { media } = tweet.entities;
     const { retweeted_status } = tweet;
     const retweetedBy = 'Retweeted By ';
-    console.log(tweet);
     if (retweeted_status) {
       const { name } = tweet.entities.user_mentions[0];
       const { screen_name } = tweet.entities.user_mentions[0];
@@ -114,10 +113,10 @@ class Media extends React.Component {
   }
 }
 
-Media.propTypes = {
+Tweet.propTypes = {
   tweet: PropTypes.shape({
     full_text: PropTypes.string,
   }).isRequired,
 };
 
-export default Media;
+export default Tweet;

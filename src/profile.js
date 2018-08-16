@@ -1,5 +1,5 @@
 import React from 'react';
-import Media from './media';
+import Tweet from './tweet_layout';
 import Data from './user_data';
 import './style.css';
 
@@ -70,7 +70,7 @@ class Profile extends React.Component {
           tweets.map(tweet => (
             <div key={tweet.id_str} className="tweet">
               <img alt="profile" src={user.profile_image_url} className="user_icon" />
-              <Media tweet={tweet} />
+              <Tweet tweet={tweet} />
             </div>
           ))
         }
